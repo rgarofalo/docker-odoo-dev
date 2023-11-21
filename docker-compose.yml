@@ -1,11 +1,12 @@
+version: '3.1'
 services:
   web:
     container_name: ${ODOO_CONTAINER_NAME}
     image: odoodev:${ODOO_VERSION}
     depends_on:
-      - db
+      - postgres
     ports:
-      - "${ODOO_PORT}:${ODOO_PORT}"
+      - "${ODOO_PORT_CUSTOM}:${ODOO_PORT_DEFAULT}"
       - "${DEBUGPY_PORT}:${DEBUGPY_PORT}"
     volumes:
       - ./conf:/etc/odoo
@@ -13,7 +14,7 @@ services:
       - ${ODOO_SERVER}:/var/lib/odoo/odoo
       - ${CUSTOM_ADDONS}:/var/lib/odoo/custom_addons
     entrypoint: ${ENTRYPOINT}
-  db:
+  postgres:
     container_name: ${PG_CONTAINER_NAME}
     image: postgres:${PG_VERSION}
     environment:

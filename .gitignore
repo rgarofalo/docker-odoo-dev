@@ -53,3 +53,6 @@ $RECYCLE.BIN/
 # compiled python files
 *.py[co]
 __pycache__/
+
+
+odoo16
