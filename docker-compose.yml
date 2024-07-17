@@ -1,31 +1,29 @@
-version: '3.1'
 services:
   web:
-    container_name: ${ODOO_CONTAINER_NAME}
-    image: odoodev:${ODOO_VERSION}
+    image: odoodev:14
+    container_name: o14
     depends_on:
-      - postgres
+      - mydb
     ports:
-      - "${ODOO_PORT_CUSTOM}:${ODOO_PORT_DEFAULT}"
-      - "${DEBUGPY_PORT}:${DEBUGPY_PORT}"
+      - "8069:8069"
+      - "8072:8072"
+      - "8888:8888"
     volumes:
       - ./conf:/etc/odoo
-      - odoo-web-data:/var/lib/odoo
-      - ${ODOO_SERVER}:/var/lib/odoo/odoo
-      - ${CUSTOM_ADDONS}:/var/lib/odoo/custom_addons
-    entrypoint: ${ENTRYPOINT}
-  postgres:
-    container_name: ${PG_CONTAINER_NAME}
-    image: postgres:${PG_VERSION}
+      - ./custom-addons:/mnt/custom-addons
+      - o14-data:/var/lib/odoo
+      # - ./odoo:/usr/lib/python3/dist-packages/odoo # uncomment this if you want to mount odoo source code 
+    entrypoint: /usr/bin/python3 -m debugpy --listen 0.0.0.0:8888 /usr/bin/odoo -c /etc/odoo/odoo.conf -d odoo -i base
+  mydb:
+    image: postgres:16
+    container_name: p16
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=${PG_PASSWORD}
-      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
-    ports:
-      - ${PG_PORT}:5432
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - p16-data:/var/lib/postgresql/data/pgdata
 volumes:
-  odoo-web-data:
-  odoo-db-data:
+  o14-data:
+  p16-data:

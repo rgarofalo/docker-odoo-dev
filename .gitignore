@@ -1,3 +1,8 @@
+# my ignore
+odoo-*
+odoo-stubs-*
+custom_addons/*
+
 ### macOS ###
 # General
 .DS_Store
@@ -56,3 +61,16 @@ __pycache__/
 
 
 odoo16
+custom-addons/
+
+blog-odoo-stub.md
+
+docker-compose.0.yml
+
+blog-folder-mnt-var-odoo.md
+
+odoo/
+
+conf/odoo.1.conf
+
+odoo.zip

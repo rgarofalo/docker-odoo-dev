@@ -1,0 +1,7 @@
+{
+    "stubPath": "{workspaceFolder}/odoo-stubs",
+    "extraPaths": [
+        "{workspaceFolder}/odoo",
+        "{workspaceFolder}/custom-addons",
+    ]
+}

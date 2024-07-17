@@ -1,8 +1,0 @@
-{
-    "stubPath": "C:/Users/IdaBagusTeguhTejaMur/Project/OdooProject/odoo-stubs16",
-    "extraPaths": [
-        "C:/Users/IdaBagusTeguhTejaMur/Project/DockerProject/docker-odoo-dev/odoo16",
-        "C:/Users/IdaBagusTeguhTejaMur/Project/DockerProject/docker-odoo-dev/odoo16/addons",
-        "C:/Users/IdaBagusTeguhTejaMur/Project/DockerProject/docker-odoo-dev/custom_addons"
-    ]
-}

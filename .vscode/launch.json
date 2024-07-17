@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Python: Remote Attach",
-            "type": "python",
+            "type": "debugpy",
             "request": "attach",
             "connect": {
                 "host": "localhost",
@@ -14,12 +14,12 @@
             },
             "pathMappings": [
                 {
-                    "localRoot": "${workspaceFolder}/custom_addons",
-                    "remoteRoot": "/var/lib/odoo/custom_addons"
+                    "localRoot": "${workspaceFolder}/custom-addons",
+                    "remoteRoot": "/mnt/custom-addons"
                 },
                 {
-                    "localRoot": "${workspaceFolder}/odoo16/addons",
-                    "remoteRoot": "/var/lib/odoo/odoo/addons"
+                    "localRoot": "${workspaceFolder}/odoo",
+                    "remoteRoot": "/usr/lib/python3/dist-packages/odoo"
                 }
             ],
             "justMyCode": true
