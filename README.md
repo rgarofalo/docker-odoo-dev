@@ -16,7 +16,7 @@ Before proceeding, ensure you have the following installed:
 
 1. **Clone the Project**
    ```bash
-   git clone https://github.com/teguhteja/docker-odoo-dev.git -b 14
+   git clone https://github.com/teguhteja/docker-odoo-dev.git -b 15
    ```
 
 2. **Get Odoo Stubs**
@@ -28,11 +28,11 @@ Before proceeding, ensure you have the following installed:
 3. **Build Docker Image**
    Build the Odoo development image:
    ```bash
-   docker build -t odoodev:14 .
+   docker build -t odoodev:15 .
    ```
 
 4. **Start Docker Compose**
-   Launch Odoo 14 and PostgreSQL 16 containers:
+   Launch Odoo 15 and PostgreSQL 16 containers:
    ```bash
    docker compose up -d
    ```

@@ -74,3 +74,7 @@ odoo/
 conf/odoo.1.conf
 
 odoo.zip
+
+blog-problem-database-backup
+
+blog-odoo-15.md

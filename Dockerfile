@@ -1,4 +1,4 @@
-FROM odoo:14
+FROM odoo:15
 
 USER root
 
@@ -15,4 +15,4 @@ COPY ./requirements.txt /requirements.txt
 RUN pip3 install -r /requirements.txt
 RUN rm /requirements.txt
 
-COPY ./misc.py /usr/lib/python3/dist-packages/odoo/tools/misc.py
+# COPY ./misc.py /usr/lib/python3/dist-packages/odoo/tools/misc.py
