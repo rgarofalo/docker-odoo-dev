@@ -28,11 +28,11 @@ Before proceeding, ensure you have the following installed:
 3. **Build Docker Image**
    Build the Odoo development image:
    ```bash
-   docker build -t odoodev:16 .
+   docker build -t odoodev:17 .
    ```
 
 4. **Start Docker Compose**
-   Launch Odoo 16 and PostgreSQL 16 containers:
+   Launch Odoo 17 and PostgreSQL 16 containers:
    ```bash
    docker compose up -d
    ```
