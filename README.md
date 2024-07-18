@@ -16,7 +16,7 @@ Before proceeding, ensure you have the following installed:
 
 1. **Clone the Project**
    ```bash
-   git clone https://github.com/teguhteja/docker-odoo-dev.git -b 16
+   git clone https://github.com/teguhteja/docker-odoo-dev.git -b 17
    ```
 
 2. **Get Odoo Stubs**
