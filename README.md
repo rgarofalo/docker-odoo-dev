@@ -1,5 +1,7 @@
 ### Project Template README: Debug Odoo with Docker in VSCode
 
+sorce project https://github.com/teguhteja/docker-odoo-dev.git
+
 #### Overview
 This project template facilitates Odoo development using Docker, specifically configured for VSCode IDE. It includes setup instructions and tips for effective debugging using the Odoo IDE extension.
 
@@ -14,40 +16,40 @@ Before proceeding, ensure you have the following installed:
 
 #### Setup Steps
 
-1. **Clone the Project**
-   ```bash
-   git clone https://github.com/teguhteja/docker-odoo-dev.git -b 17
-   ```
+1. **Clone this Project**
 
 2. **Get Odoo Stubs**
-   Run the script to fetch the `odoo-stub` folder:
+   Clone  `odoo-stub` project:
    ```bash
-   ./git-clone-odoo-stubs.sh
+   git clone -b 18.0 https://github.com/odoo-ide/odoo-stubs.git
    ```
+   Utilizzando questi stub, gli IDE forniranno un migliore completamento del codice, Le selezionatrici di tipo statico forniranno rapporti migliori.
 
 3. **Build Docker Image**
    Build the Odoo development image:
    ```bash
-   docker build -t odoodev:17 .
+   docker build -t odoodev:18 .
    ```
 
 4. **Start Docker Compose**
-   Launch Odoo 17 and PostgreSQL 16 containers:
+   Launch Odoo 18 and PostgreSQL containers:
    ```bash
    docker compose up -d
    ```
 
 5. **Add Your Addons**
-   Place your addons in the `custom-addons` folder and restart the Docker stack (`docker compose restart odoo-dev`) using docker extension vscode.
+   Place your addons in the `extra-addons` folder and restart the Docker stack (`docker compose restart odoo-dev`) using docker extension vscode.
 
-6. **Debugging**
+
+6. **Copy the Odoo source code from the container:**
+   ```bash
+   ./docker-cp-odoo.sh
+   ```
+
+7. **Debugging**
    - Set breakpoints in your source code within VSCode.
    - Ensure the debugger is configured to debug external code (`"justMyCode": false` in launch.json).
-   - Access the Odoo source code from the container:
-     ```bash
-     ./docker-cp-odoo.sh
-     ```
-   - Add breakpoints in the Odoo source code.
+   - Add breakpoints in the Odoo source code. (se vuoi)
    - Run the debugger process to start debugging.
 
 #### Troubleshooting Tips

@@ -1,29 +1,70 @@
+version: '3.8'
+
 services:
-  web:
-    image: odoodev:17
-    container_name: o17
-    depends_on:
-      - mydb
-    ports:
-      - "8069:8069"
-      - "8072:8072"
-      - "8888:8888"
-    volumes:
-      - ./conf:/etc/odoo
-      - ./custom-addons:/mnt/custom-addons
-      - o17-data:/var/lib/odoo
-      # - ./odoo:/usr/lib/python3/dist-packages/odoo # uncomment this if you want to mount odoo source code 
-    entrypoint: /usr/bin/python3 -m debugpy --listen 0.0.0.0:8888 /usr/bin/odoo -c /etc/odoo/odoo.conf -d odoo -i base
-  mydb:
-    image: postgres:16
-    container_name: p16
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
-      - PGDATA=/var/lib/postgresql/data/pgdata
-    volumes:
-      - p16-data:/var/lib/postgresql/data/pgdata
+
+    postgres:
+        container_name: odoodev-postgres
+        image: postgres:17.0-alpine
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_DB: postgres
+            POSTGRES_USER: odoo
+            POSTGRES_PASSWORD: secret
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+        restart: always
+
+        networks:
+            - odoo
+
+    odoo:
+        container_name: odoodev
+        image: odoodev:18
+        environment:
+            HOST: postgres
+            USER: odoo
+            PASSWORD: secret
+        depends_on:
+            - postgres
+        ports:
+            - 8069:8069
+            - 8072:8072 # live chat
+            - 8888:8888 # debugpy
+        volumes:
+            - "D:/odoo-volumes/config:/etc/odoo"
+            - "./extra-addons:/mnt/extra-addons"
+            - "D:/odoo-volumes/data:/var/lib/odoo"
+            # - ./odoo:/usr/lib/python3/dist-packages/odoo # uncomment this if you want to mount odoo source code 
+        entrypoint: >
+            /usr/bin/python3 -m debugpy --listen 0.0.0.0:8888  /usr/bin/odoo --db_host=postgres --db_user=odoo --db_password=secret     
+        restart: always
+        links:
+            - postgres
+        networks:
+            - odoo
+
+    pgadmin:
+        container_name: pgadmin_container
+        image: dpage/pgadmin4
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=admin@admin.org
+            - PGADMIN_DEFAULT_PASSWORD=admin
+        depends_on:
+            - postgres
+        ports:
+            - 5050:80
+        networks:
+            - odoo
+        restart: unless-stopped
+
 volumes:
-  o17-data:
-  p16-data:
+    postgres-data:
+    config:
+    extra-addons:
+    data:
+
+
+networks:
+  odoo:
+    driver: bridge

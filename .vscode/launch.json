@@ -14,8 +14,8 @@
             },
             "pathMappings": [
                 {
-                    "localRoot": "${workspaceFolder}/custom-addons",
-                    "remoteRoot": "/mnt/custom-addons"
+                    "localRoot": "${workspaceFolder}/extra-addons",
+                    "remoteRoot": "/mnt/extra-addons"
                 },
                 {
                     "localRoot": "${workspaceFolder}/odoo",

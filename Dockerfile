@@ -1,4 +1,4 @@
-FROM odoo:17
+FROM odoo:18
 
 USER root
 
@@ -10,9 +10,8 @@ RUN apt-get update && apt-get install -y \
     cargo \
     zip
 
-RUN pip3 install --upgrade pip
 COPY ./requirements.txt /requirements.txt
-RUN pip3 install -r /requirements.txt
+RUN pip3 install -r /requirements.txt --break-system-packages
 RUN rm /requirements.txt
 
 # COPY ./misc.py /usr/lib/python3/dist-packages/odoo/tools/misc.py

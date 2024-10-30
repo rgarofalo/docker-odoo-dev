@@ -1,7 +1,10 @@
 # my ignore
-odoo-*
-odoo-stubs-*
-custom_addons/*
+odoo/*
+!odoo/.gitkeep
+odoo-stubs/*
+!odoo-stubs/.gitkeep
+extra-addons/*
+!extra-addons/.gitkeep
 
 ### macOS ###
 # General
@@ -60,21 +63,9 @@ $RECYCLE.BIN/
 __pycache__/
 
 
-odoo16
-custom-addons/
+# odoo/*
+# !odoo/.gitkeep
+# extra_addons/
+# !extra_addons/.gitkeep
 
-blog-odoo-stub.md
-
-docker-compose.0.yml
-
-blog-folder-mnt-var-odoo.md
-
-odoo/
-
-conf/odoo.1.conf
-
-odoo.zip
-
-blog-problem-database-backup
-
-blog-odoo-15.md
+# conf/odoo.1.conf
