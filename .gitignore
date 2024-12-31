@@ -70,3 +70,4 @@ __pycache__/
 
 # conf/odoo.1.conf
 _bk
+odoo-volumes
