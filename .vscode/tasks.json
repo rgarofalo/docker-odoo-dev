@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Translate",
+            "type": "shell",
+            "command": "docker exec -it odoodev odoo --i18n-export=/mnt/extra-addons/${input:module_name}/i18n/${input:module_name}.pot -l en_US --modules ${input:module_name} -d test --db_host=postgres --db_user=odoo --db_password=secret --no-http"
+        },
+        {
+            "label": "update module",
+            "type": "shell",
+            "command": "docker exec -it odoodev odoo -u ${input:module_name} -d test --db_host=postgres --db_user=odoo --db_password=secret --no-http"
+        },
+        {
+            "label": "crea nuovo module",
+            "type": "shell",
+            "command": "docker exec -it odoodev odoo scaffold ${input:module_name} /mnt/extra-addons"
+        },
+    ],
+    "inputs": [
+        {
+            "id": "module_name",
+            "description": "module_name:",
+            "default": "membership_extension",
+            "type": "promptString"
+        },
+    ]
+}
+// $ docker exec -it odoodev odoo -u sync_membership_employee -d test --db_host=postgres --db_user=odoo --db_password=secret --no-http
+// self.env['ir.module.module'].search([('name', '=like', 'fl_%'), ('state', '=', 'installed')]).button_immediate_uninstall()
+// [module.name for module in self.env['ir.module.module'].search([('name', 'like', 'web.utils'), ('state', '=', 'installed')])]
+
+// pip3 install python-barcode --break-system-packages

@@ -69,3 +69,4 @@ __pycache__/
 # !extra_addons/.gitkeep
 
 # conf/odoo.1.conf
+_bk

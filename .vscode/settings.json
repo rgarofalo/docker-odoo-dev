@@ -1,3 +1,30 @@
 {
-    "python.languageServer": "None"
+    "python.languageServer": "None",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/odoo",
+        "${workspaceFolder}/extra-addons/",
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/odoo",
+        "${workspaceFolder}/odoo/addons",
+        "${workspaceFolder}/extra-addons/",
+    ],
+    "python.analysis.typeshedPaths": [
+        "${workspaceFolder}/extra-addons"
+    ],
+    "python.analysis.stubPath": "${workspaceFolder}/odoo-stubs",
+    "python.analysis.exclude": [
+        "${workspaceFolder}/odoo-stubs"
+    ],
+    //"python.linting.pylintPath": "optional: path to python use if you have environment path",
+    "pylint.enabled": false,
+    //load the pylint_odoo
+    "pylint.args": [
+        "--load-plugins",
+        "pylint_odoo"
+    ],
+    // "python.formatting.provider": "yapf",
+    // //"python.formatting.yapfPath": "optional: path to python use if you have environment path",
+    // // "python.linting.pep8Path": "optional: path to python use if you have environment path",
+    // "python.linting.pep8Enabled": true,
 }

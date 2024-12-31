@@ -32,12 +32,12 @@ services:
             - 8072:8072 # live chat
             - 8888:8888 # debugpy
         volumes:
-            - "D:/odoo-volumes/config:/etc/odoo"
+            - "./odoo-volumes/config:/etc/odoo"
             - "./extra-addons:/mnt/extra-addons"
-            - "D:/odoo-volumes/data:/var/lib/odoo"
+            - "./odoo-volumes/data:/var/lib/odoo"
             # - ./odoo:/usr/lib/python3/dist-packages/odoo # uncomment this if you want to mount odoo source code 
         entrypoint: >
-            /usr/bin/python3 -m debugpy --listen 0.0.0.0:8888  /usr/bin/odoo --db_host=postgres --db_user=odoo --db_password=secret     
+            /usr/bin/python3 -m debugpy --listen 0.0.0.0:8888  /usr/bin/odoo --db_host=postgres --db_user=odoo --db_password=secret
         restart: always
         links:
             - postgres
